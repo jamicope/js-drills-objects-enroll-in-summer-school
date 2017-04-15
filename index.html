@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2017 by jamicope (http://jsbin.com/xoquhar/2/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+
+<script id="jsbin-javascript">
+var studentData = [
+  {
+    name: 'Tim',
+    status: 'Current student',
+    course: 'Biology'
+  },
+  {
+    name: 'Sue',
+    status: 'Withdrawn',
+    course: 'Mathematics'
+  },
+  {
+    name: 'Liz',
+    status: 'On leave',
+    course: 'Computer science'
+  }
+];
+
+function enrollInSummerSchool(students) {
+  return students.map(function(list) {
+    return {
+    name: list.name,
+    status: 'In Summer school',
+    course: list.course
+    }
+ });
+}
+
+/* From here down, you are not expected to understand.... for now :)
+  Nothing to see here!
+
+*/
+
+// tests
+
+
+function testIt() {
+  var testData = [
+    {
+      name: 'Burt',
+      status: 'Playing hooky',
+      course: 'Biology'
+    },
+    {
+      name: 'Melanie',
+      status: 'Sick',
+      course: 'Mathematics'
+    },
+    {
+      name: 'Leonard',
+      status: 'AWOL',
+      course: 'Computer science'
+    }
+  ];
+
+  var results = enrollInSummerSchool(testData);
+
+  if (!(results && results instanceof Array)) {
+    console.error('FAILURE: `enrollSummerSchool` must return an array');
+    return
+  }
+
+  for (var i=0; i<testData.length; i++) {
+    var result = results.find(function(_result) {
+      return (
+        _result.name === testData[i].name &&
+        _result.course === testData[i].course &&
+        _result.status === 'In Summer school');
+    });
+    if (!result) {
+      console.error(
+        'FAILURE: `enrollSummerSchool` should return ' +
+        'original key/value pairs for each student, and ' +
+        'update `status` to "In Summer school"');
+      return
+    }
+  }
+  console.info('SUCCESS: `enrollSummerSchool` is working');
+}
+
+testIt();
+</script>
+</body>
+</html>
